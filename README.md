@@ -1,38 +1,30 @@
-# create-svelte
+# SvelteKit full-stack web application on Azure Static Web Apps
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is a demo SvelteKit full-stack web application. The application is deployed to a single Azure Static Web Apps resource, and makes use of Static Web Apps' Functions integration to host the server handlers.
 
-## Creating a project
+## Local development
 
-If you're seeing this, you've probably already done this step. Congrats!
-
+To get started with local development, follow these steps:
+    
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+You may also configure your environment variables so that you can access the Cosmos DB database. Create a `.env` file in the root of the project and add the following environment variables:
 
 ```bash
-npm run build
+COSMOSDB_KEY=<ENTER COSMOS DB KEY>
+COSMOSDB_ENDPOINT=<ENTER COSMOS DB ENDPOINT>
 ```
 
-You can preview the production build with `npm run preview`.
+Access the application at [http://localhost:5173](http://localhost:5173).
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Deployment
+
+To deploy to Azure Static Web Apps, create a Static Web Apps resource from the Azure Portal. Specify `SvelteKit` as the build preset.
+
+Set the following environment variables in the Static Web Apps resource from the Azure Portal:
+
+"COSMOSDB_KEY": "<ENTER COSMOS DB KEY>",
+"COSMOSDB_ENDPOINT": "<ENTER COSMOS DB ENDPOINT>",
