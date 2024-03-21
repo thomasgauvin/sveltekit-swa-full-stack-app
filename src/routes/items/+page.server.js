@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import { CosmosClient } from '@azure/cosmos';
 import { env } from '$env/dynamic/private';
 import { fail } from '@sveltejs/kit';
