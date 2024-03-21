@@ -4,12 +4,13 @@ import { CosmosClient } from '@azure/cosmos';
 import { env } from '$env/dynamic/private';
 import { fail } from '@sveltejs/kit';
 
-const client = new CosmosClient({
-    endpoint: env.COSMOSDB_ENDPOINT,
-    key: env.COSMOSDB_KEY
-});
 
 export async function load({ params }) {
+    const client = new CosmosClient({
+        endpoint: env.COSMOSDB_ENDPOINT,
+        key: env.COSMOSDB_KEY
+    });
+
     console.log('SvelteKit load function processed a request.');
     
     const database = client.database('SWAStore');
@@ -23,6 +24,11 @@ export async function load({ params }) {
 
 export const actions = {
     delete: async ({ cookies, request }) => {
+        const client = new CosmosClient({
+            endpoint: env.COSMOSDB_ENDPOINT,
+            key: env.COSMOSDB_KEY
+        });
+        
         console.log('SvelteKit delete action processed a request.');
 
         const data = await request.formData();

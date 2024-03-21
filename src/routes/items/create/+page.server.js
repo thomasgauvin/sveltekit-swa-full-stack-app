@@ -4,13 +4,13 @@ import { CosmosClient } from '@azure/cosmos';
 import { env } from '$env/dynamic/private';
 import { fail, redirect } from '@sveltejs/kit';
 
-const client = new CosmosClient({
-    endpoint: env.COSMOSDB_ENDPOINT,
-    key: env.COSMOSDB_KEY
-});
-
 export const actions = {
     default: async ({ cookies, request }) => {
+        const client = new CosmosClient({
+            endpoint: env.COSMOSDB_ENDPOINT,
+            key: env.COSMOSDB_KEY
+        });
+
         console.log('SvelteKit create action processed a request.');
 
         const data = await request.formData();
