@@ -6,7 +6,7 @@ import { fail, redirect } from '@sveltejs/kit';
 
 export const actions = {
     default: async ({ cookies, request }) => {
-        fail(401, 'Unauthorized')
+        return fail(401, 'Unauthorized')
         //Uncomment to enable mutations (and remove line above)
         // const client = new CosmosClient({
         //     endpoint: env.COSMOSDB_ENDPOINT,

@@ -24,7 +24,7 @@ export async function load({ params }) {
 
 export const actions = {
     delete: async ({ cookies, request }) => {
-        fail(401, 'Unauthorized')
+        return fail(401, 'Unauthorized')
         //Uncomment to enable mutations (and remove line above)
         // const client = new CosmosClient({
         //     endpoint: env.COSMOSDB_ENDPOINT,
