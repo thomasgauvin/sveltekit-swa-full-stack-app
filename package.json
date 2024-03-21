@@ -18,5 +18,8 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-node": "^5.0.1"
+	},
+	"engines": {
+		"node": "18.17.1"
 	}
 }
