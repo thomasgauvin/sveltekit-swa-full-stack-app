@@ -24,27 +24,29 @@ export async function load({ params }) {
 
 export const actions = {
     delete: async ({ cookies, request }) => {
-        const client = new CosmosClient({
-            endpoint: env.COSMOSDB_ENDPOINT,
-            key: env.COSMOSDB_KEY
-        });
-        
-        console.log('SvelteKit delete action processed a request.');
+        fail(401, 'Unauthorized')
+        //Uncomment to enable mutations (and remove line above)
+        // const client = new CosmosClient({
+        //     endpoint: env.COSMOSDB_ENDPOINT,
+        //     key: env.COSMOSDB_KEY
+        // });
 
-        const data = await request.formData();
-        const itemId = data.get('id');
-        
-        const database = client.database('SWAStore');
-        const container = database.container('Items');
+        // console.log('SvelteKit delete action processed a request.');
 
-        try{
-            await container.item(itemId, itemId).delete();
-            return {
-                success: true
-            };
-        }
-        catch (error){
-            return fail(500, 'Failed to delete item.')
-        }
+        // const data = await request.formData();
+        // const itemId = data.get('id');
+        
+        // const database = client.database('SWAStore');
+        // const container = database.container('Items');
+
+        // try{
+        //     await container.item(itemId, itemId).delete();
+        //     return {
+        //         success: true
+        //     };
+        // }
+        // catch (error){
+        //     return fail(500, 'Failed to delete item.')
+        // }
     }
 }
